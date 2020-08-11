@@ -1,0 +1,39 @@
+<%- include ("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">Edit <%=restaurant.name %></h1>
+        <div style="width:30%; margin: 25px auto; ">
+            <form action="/restaurants/<%=restaurant._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[name]" value="<%= restaurant.name %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[image]" value="<%= restaurant.image %>">
+                </div>
+                <div class="form-group">
+                    <select name="restaurant[province]" class="form-control">
+                        <option value="Novi Beograd">Novi Beograd</option>
+                        <option value="Savski Venac">Savski Venac</option>
+                        <option value="Stari Grad">Stari Grad</option>
+                        <option value="Voždovac">Voždovac</option>
+                        <option value="Vračar">Vračar</option>
+                        <option selected value="Zemun">Zemun</option>
+                        <option value="Zvezdara">Zvezdara</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="restaurant[street]" value="<%= restaurant.street %>">
+                </div>
+                <div class="form-group">
+                    <textarea style="height: 120px;" class="form-control" type="text" name="restaurant[description]" ><%= restaurant.description %>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/restaurants">Go Back</a>
+        </div>
+    </div>
+</div>
+<%- include ("../partials/footer") %>

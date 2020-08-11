@@ -1,0 +1,75 @@
+<%- include ("../partials/header") %>
+
+<div class="container">
+    <header class="jumbotron" style="height: 300px;">
+        <div class="container">
+            <p style="font-size: 44px; font-family: 'Lemonada', cursive;">Welcome To <br><span style="font-size: 44px;">BeogradskiRestorani.com</span></p>
+            <hr><hr>
+            <div>
+                <form action="/restaurants" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Pretraga po nazivu" class="form-control">
+                        <input type="submit" value="Pretraži" class="btn btn-primary">
+                    </div>
+                </form>
+                <span class="pull-right" style="margin-top: -35px;">
+                    <form action="/restaurants" method="GET" class="form-inline">
+                        <div class="form-group">
+                            <select name="province" class="form-control">
+                                <option value="Novi Beograd">Novi Beograd</option>
+                                <option value="Savski Venac">Savski Venac</option>
+                                <option value="Stari Grad">Stari Grad</option>
+                                <option value="Voždovac">Voždovac</option>
+                                <option value="Vračar">Vračar</option>
+                                <option selected value="Zemun">Zemun</option>
+                                <option value="Zvezdara">Zvezdara</option>
+                              </select>
+                              <input type="submit" value="Pretraži" class="btn btn-primary">
+                        </div>
+                    </form>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <div class="col-md-12">
+            <% if(noMatch !== undefined && noMatch !== '') { %>
+                <h3><%= noMatch %></h3>
+                <hr>
+                <p>
+                    <form action="/restaurants" method="GET" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="Pretraga po nazivu" class="form-control">
+                            <input type="submit" value="Pretraži" class="btn btn-primary">
+                        </div>
+                    </form>
+                </p>
+                <% } %>
+        </div>
+        <% restaurants.forEach(function(restaurant){ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail" style="height: 340px;">
+                <img src="<%= restaurant.image %>" style="height: 200px;">
+                <div class="caption">
+                    <h4><%= restaurant.name %></h4>
+                    <% if (restaurant.rating === 0) { %>
+                    <em>No reviews yet.</em>
+                    <% } else { %>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star <% if (restaurant.rating > 1.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (restaurant.rating > 2.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (restaurant.rating > 3.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (restaurant.rating > 4.5) { %> checked <% } %>"></span>
+                    <% } %>
+                </div>
+                <p>
+                    <a href="/restaurants/<%= restaurant._id %>" class="btn btn-primary">More Info</a>
+                </p>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include ("../partials/footer") %>
