@@ -1,0 +1,41 @@
+<%- include ("../partials/header") %>
+
+<div class="row">
+    <div class="col-xs-4 col-sm-offset-2">
+        <h3><em>@<%= user.username %></em></h3>
+        <div class="thumbnail">
+            <img  style="max-height: 600px;" src="<%= user.avatar %>" alt="user image" />
+            <div class="caption"><%= user.firstName + " " + user.lastName %></div>
+            <div class="caption">
+                <a href="mailto: <%= user.email %>"><%= user.email %></a>
+            </div>
+            <div class="caption"><%= user.phone %></div>
+            <div class="caption"><h4>Total Comments: <span><%= comments.length %></span></h4></div>
+        </div>
+
+        <% if(currentUser && currentUser._id.equals(user._id)) { %>
+            <a href="/users/<%= user._id %>/edit">Edit Profile</a>
+        <% } %>
+    </div>
+
+    <div class="col-sm-offset-1 col-xs-3" style="margin-top: 35px;">
+        <% if(restaurants.length > 0) {%>
+        <h3><%= user.username %>'s restaurants:</h3>
+        <% } %>
+        <ul class="list-group">
+            <% restaurants.forEach(function(restaurant) { %>
+            <li class="list-group-item" style="height:70px;">
+                <img style="float: left; height: 52px; width: 60px;" src="<%= restaurant.image %>">
+                <h4><a style="color: purple; " class="pull-right" href="/restaurants/<%= restaurant._id %>"><%= restaurant.name%></a></h4>
+            </li>
+            <% }); %>
+        </ul>
+        <br/><br/>
+        <% if(restaurants.length > 0) {%>
+        <% } %>
+            
+    </div>
+</div>
+<br /><br /><br /><br />
+
+<%- include ("../partials/footer") %>

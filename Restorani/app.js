@@ -14,6 +14,10 @@ var commentRoutes = require("./routes/comments");
 var restaurantRoutes = require("./routes/restaurants");
 var indexRoutes = require("./routes/index");
 var reviewRoutes = require("./routes/review");
+var obj = require("./middleware/length");
+
+var length = obj.number();
+console.log(length);
 
 //seedDB();
 mongoose.set('useNewUrlParser', true);
@@ -45,6 +49,7 @@ app.use(function(req,res,next) {
     res.locals.success = req.flash("success");
     next();
 });
+
 
 app.use(indexRoutes);
 app.use("/restaurants",restaurantRoutes);

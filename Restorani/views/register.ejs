@@ -6,10 +6,25 @@
         <div style="width:30%; margin: 25px auto; ">
             <form action="/register" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" placeholder="username">
+                    <input class="form-control" type="text" name="username" placeholder="username" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="password">
+                    <input class="form-control" type="text" name="firstName" placeholder="first name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="lastName" placeholder="last name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="email (optional)">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="phone" placeholder="phone (optional)">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="avatar" placeholder="image (optional)">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block">Sign Up</button>

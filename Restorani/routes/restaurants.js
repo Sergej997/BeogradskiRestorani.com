@@ -3,9 +3,110 @@ var router = express.Router();
 var Restaurant = require("../models/restaurant");
 var Review = require("../models/review");
 var middleware = require("../middleware");
+var Comment = require("../models/comment");
 
 router.get("/", function (req, res) {
-  if (req.query.search) {
+  const results = {};
+
+  if(req.query.limit && req.query.page && req.query.province && !req.query.search) {
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    const regex1 = new RegExp(escapeRegex(req.query.province), 'gi');
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    var noMatch='';
+    Restaurant.find({name:regex, province: regex1}, function(err, allRestaurants) {
+        if(err) {
+            console.log(err);
+        }else {
+            if(allRestaurants.length < 1) {
+                noMatch = "No restaurants match this search. Please try again!"
+            }
+            results.newRestaurants = allRestaurants.slice(startIndex, endIndex);
+
+            results.next = {
+              page: page + 1,
+              limit: limit
+            };
+        
+            results.prev = {
+              page: page - 1,
+              limit: limit
+            };
+            var search = req.query.search;
+            var province = req.query.province;
+            const mode = true;
+            res.render("restaurants/index", {restaurants: results.newRestaurants, noMatch: noMatch, results: results,
+            mode: mode, length: allRestaurants.length, search: search, province: province});
+        }
+    });
+
+  }else if(req.query.limit && req.query.page && req.query.province && req.query.search) {
+  
+    
+  }else if(req.query.limit && req.query.page && !req.query.search && !req.query.province) {
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    Restaurant.find({}, function (err, allRestaurants) {
+      if (err) {
+        console.log(err);
+      } else {
+        results.newRestaurants = allRestaurants.slice(startIndex, endIndex);
+
+          const mode = false;
+
+          results.next = {
+            page: page + 1,
+            limit: limit
+          };
+      
+          results.prev = {
+            page: page - 1,
+            limit: limit
+          };
+        
+        var search;
+        var province;
+        
+        res.render("restaurants/index", {
+          restaurants: results.newRestaurants,
+          length: allRestaurants.length,
+          results: results,
+          currentUser: req.user,
+          page: "restaurants",
+          search:search,
+          province: province,
+          mode: mode,
+          noMatch: noMatch
+        });
+      }
+    });
+  }else if (req.query.search && req.query.province !== 'default' && !req.query.limit && !req.query.page) {
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    const regex1 = new RegExp(escapeRegex(req.query.province), 'gi');
+    var noMatch='';
+    Restaurant.find({name:regex, province: regex1}, function(err, allRestaurants) {
+        if(err) {
+            console.log(err);
+        }else {
+            if(allRestaurants.length < 1) {
+                noMatch = "No restaurants match this search. Please try again!"
+            }
+            var search = req.query.search;
+            var province = req.query.province;
+            const mode = true;
+            res.render("restaurants/index", {restaurants: allRestaurants, noMatch: noMatch, results: results,
+            mode: mode, length: allRestaurants.length, search: search, province: province});
+        }
+    });
+  } else if(req.query.search && req.query.province === 'default') {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     var noMatch='';
     Restaurant.find({name:regex}, function(err, allRestaurants) {
@@ -15,12 +116,18 @@ router.get("/", function (req, res) {
             if(allRestaurants.length < 1) {
                 noMatch = "No restaurants match this search. Please try again!"
             }
-            res.render("restaurants/index", {restaurants: allRestaurants, noMatch: noMatch});
+            const mode = false;
+            var search;
+            var province;
+            res.render("restaurants/index", {restaurants: allRestaurants, noMatch: noMatch, results: results, mode: mode,
+            length: allRestaurants.length, search: search, province: province});
         }
     });
-  } else if(req.query.province) {
+  } else if(req.query.province && req.query.province !== 'default' && !req.query.search && !req.query.limit && !req.query.page) {
       const regex = new RegExp(escapeRegex(req.query.province), 'gi');
       var noMatch='';
+      console.log(regex);
+      console.log(req.query.province);
       Restaurant.find({province:regex}, function(err, allRestaurants) {
         if(err) {
             console.log(err);
@@ -28,7 +135,13 @@ router.get("/", function (req, res) {
             if(allRestaurants.length < 1) {
                 noMatch = "No restaurants match this search. Please try again!"
             }
-            res.render("restaurants/index", {restaurants: allRestaurants, noMatch: noMatch});
+            const mode = true;
+            var search;
+            var province = req.query.province;
+            newRestaurants = allRestaurants.slice(0,8);
+            res.render("restaurants/index", {restaurants: newRestaurants, noMatch: noMatch, results: results,
+              mode: mode,
+              length: allRestaurants.length, search: search, province: province});
         }
     });
   } else {
@@ -36,11 +149,20 @@ router.get("/", function (req, res) {
       if (err) {
         console.log(err);
       } else {
+        const mode = false;
+        var search;
+        var province;
+        newRestaurants = allRestaurants.slice(0, 8);
         res.render("restaurants/index", {
-          restaurants: allRestaurants,
+          restaurants: newRestaurants,
           currentUser: req.user,
+          results: results,
+          mode: mode,
           page: "restaurants",
-          noMatch: noMatch
+          length: allRestaurants.length,
+          noMatch: noMatch,
+          search: search,
+          province: province
         });
       }
     });
@@ -68,7 +190,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      console.log(newlyCreated);
+      //console.log(newlyCreated);
       res.redirect("/restaurants");
     }
   });

@@ -1,18 +1,28 @@
 <%- include ("../partials/header") %>
 
 <div class="container">
-    <header class="jumbotron" style="height: 300px;">
+    <header class="jumbotron" style="height: 300px; background-color:#D7DBDD;">
         <div class="container">
             <p style="font-size: 44px; font-family: 'Lemonada', cursive;">Welcome To <br><span style="font-size: 44px;">BeogradskiRestorani.com</span></p>
-            <hr><hr>
+            <br><br>
             <div>
                 <form action="/restaurants" method="GET" class="form-inline">
                     <div class="form-group">
                         <input type="text" name="search" placeholder="Pretraga po nazivu" class="form-control">
+                        <select name="province" class="form-control">
+                            <option value="default">Show All</option>
+                            <option value="Novi Beograd">Novi Beograd</option>
+                            <option value="Savski Venac">Savski Venac</option>
+                            <option value="Stari Grad">Stari Grad</option>
+                            <option value="Voždovac">Voždovac</option>
+                            <option value="Vračar">Vračar</option>
+                            <option value="Zemun">Zemun</option>
+                            <option value="Zvezdara">Zvezdara</option>
+                          </select>
                         <input type="submit" value="Pretraži" class="btn btn-primary">
                     </div>
                 </form>
-                <span class="pull-right" style="margin-top: -35px;">
+              <!-- <span class="pull-right" style="margin-top: -35px;">
                     <form action="/restaurants" method="GET" class="form-inline">
                         <div class="form-group">
                             <select name="province" class="form-control">
@@ -27,10 +37,46 @@
                               <input type="submit" value="Pretraži" class="btn btn-primary">
                         </div>
                     </form>
-                </span>
+                </span> -->
             </div>
         </div>
     </header>
+
+    <% var value = 2 %>
+    <% var limit = 8 %>
+    <% var end = false %>
+    <% var prevEnd = false %>
+    <% var prevValue %>
+    <% var search %>
+    <% var province %>
+
+    <% if(results.next) { %>
+        <% if((results.next.page-1) * limit > length) { %>
+            <% end = true %>
+       <% } %>
+       <% value = results.next.page %>
+    <% } %>
+
+    <% if(length < 8 && !results.next) { %>
+        <% end = true %>
+        <% prevEnd = true %>
+    <% } %>
+
+    <% if(length > 8 && mode && province && !search) { %>
+        
+    <% } %>
+
+
+    <% if(value === 2) { %>
+        <% prevEnd = true %>
+    <% } %>
+
+    <% if(results.prev) { %>
+        <% if(results.prev.page === 0) { %>
+            <% prevEnd = true %>
+       <% } %>
+       <% prevValue = results.prev.page %>
+    <% } %>
 
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
         <div class="col-md-12">
@@ -70,6 +116,41 @@
         </div>
         <% }); %>
     </div>
+    <div class="row" style="padding-top: 35px;">
+        <div class="col-xs-offset-5 col-xs-2">
+
+            <form style="display: inline-block;" action="/restaurants" method="GET">
+                <input type="text" name="limit" class="form-control" style="display: none;" value="<%= limit %>">
+                <input type="text" name="page" class="form-control" style="display: none;" value="<%= prevValue %>">
+                <% if(mode) { %>
+                    <input type="text" name="search" class="form-control" style="display: none;" value="<%= search %>">
+                    <input type="text" name="province" class="form-control" style="display: none;" value="<%= province %>">
+                    <% } %>
+                <% if(!prevEnd) { %>
+                    <button type="submit" class="btn btn-sm btn-info">prev</button>
+                <% } else { %>
+                    <button disabled type="submit" class="btn btn-sm btn-info">prev</button>
+                <% } %>               
+            </form>
+
+            <form style="display: inline-block;" action="/restaurants" method="GET">
+                <input type="text" name="limit" class="form-control" style="display: none;" value="<%= limit %>">
+                <input type="text" name="page" class="form-control" style="display: none;" value="<%= value %>">
+                <% if(mode) { %>
+                    <input type="text" name="search" class="form-control" style="display: none;" value="<%= search %>">
+                    <input type="text" name="province" class="form-control" style="display: none;" value="<%= province %>">
+                    <% } %>
+                <% if(!end) { %>
+                    <button  type="submit" class="btn btn-sm btn-info">next</button>
+                <% } else { %>
+                    <button disabled type="submit" class="btn btn-sm btn-info">next</button>
+                <% } %>                
+            </form>
+
+        </div>
+    </div>
 </div>
+<br><br>
+
 
 <%- include ("../partials/footer") %>

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BeogradskiRestorani.com</title>
@@ -21,12 +22,12 @@
                   <span class="icon-bar"></span>
                 </button>
     
-                <a class="navbar-brand" href="/">Beogradski Restorani</a>
+                <a class="navbar-brand" href="/">BR.com</i></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 <li class="<%= typeof page !== 'undefined' && page === 'restaurants' ? 'active' : '' %>"><a href="/restaurants">Home</a></li>
-                <li><a href="restaurants/new">Add New</a></li>
+                <li><a href="/restaurants/new">Add New</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   <% if(!currentUser){ %>
