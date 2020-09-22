@@ -53,3 +53,67 @@ html {
   .checked {
       color: orange;
   }
+
+  .btnnext, .btnprev {
+    color: purple;
+    background-color: #C1CDCD	;
+    border-radius: 12px;
+  }
+
+  .jumbopara {
+    opacity: 0;
+    transform: translateY(85px);
+    transition: all 1s ease;
+    font-size: 38px; 
+    font-family: 'Lemonada', cursive;
+  }
+
+  .jumbospan {
+    font-size: 48px;
+  }
+
+  .paraeffect {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .inputs {
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(85px);
+    transition: all 1.5s ease;
+  }
+  
+  .inputeffect {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .buttons {
+    padding-left: 45%;
+    padding-top: 65px;
+  }
+
+
+  @media only screen and (max-width: 991px) {
+    .buttons {
+      padding-left: 40%;
+      padding-top: 45px;
+    }
+  }
+
+  
+  @media only screen and (max-width: 800px) {
+    .inputs {
+      margin-top: 0px;
+      width: 80vw;
+    }
+    .jumbopara {
+      font-size: 16px;
+    }
+    .jumbospan {
+      font-size: 28px;
+    }    
+  }
+
+

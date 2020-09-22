@@ -25,6 +25,20 @@
                     <input class="form-control" type="text" name="restaurant[street]" value="<%= restaurant.street %>">
                 </div>
                 <div class="form-group">
+                    <select name="restaurant[type]" class="form-control">
+                        <option value="Bar">Barovi i pabovi</option>
+                        <option value="Bistro">Bistro</option>
+                        <option value="Italijanska Hrana">Italijanska hrana</option>
+                        <option value="Kafeterija">Kafeterije</option>
+                        <option value="Kineska Hrana">Kineska hrana</option>
+                        <option value="Picerija">Picerije</option>
+                        <option value="Poslastičarnica">Poslastičarnice</option>
+                        <option selected value="Restoran">Restorani</option>
+                        <option value="Vegetarijanski Restoran">Vegetarijanski restorani</option>
+                        <option value="Čorbe">Čorbe</option>
+                      </select>
+                </div>
+                <div class="form-group">
                     <textarea style="height: 120px;" class="form-control" type="text" name="restaurant[description]" ><%= restaurant.description %>
                     </textarea>
                 </div>

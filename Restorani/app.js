@@ -56,6 +56,24 @@ app.use("/restaurants",restaurantRoutes);
 app.use("/restaurants/:id/comments",commentRoutes);
 app.use("/restaurants/:id/reviews", reviewRoutes);
 
+Restaurant.findById("5f324e4969f1840df866bd70", function(err,foundRestaurant) {
+    if(err) {
+        console.log(err);
+    }
+
+    //foundRestaurant.similarRestaurants = [];
+    //foundRestaurant.save();
+    /*foundRestaurant.similarRestaurants.push("5f463fa73d68081e3402b80e");
+    foundRestaurant.similarRestaurants.push("5f4246b70543d81940e6368b");
+    foundRestaurant.similarRestaurants.push("5f42ade2b29e481b24ed5d27");
+    foundRestaurant.save();*/
+    
+    /*foundRestaurant.similarRestaurants.forEach(element => {
+        console.log(element);
+    });*/
+})
+
+
 app.listen(3000, function () {
     console.log("Server has started");
 });

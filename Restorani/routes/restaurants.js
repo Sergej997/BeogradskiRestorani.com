@@ -9,6 +9,7 @@ router.get("/", function (req, res) {
   const results = {};
 
   if(req.query.limit && req.query.page && req.query.province && !req.query.search) {
+    //console.log("1");
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     const regex1 = new RegExp(escapeRegex(req.query.province), 'gi');
     const page = parseInt(req.query.page);
@@ -48,6 +49,7 @@ router.get("/", function (req, res) {
   
     
   }else if(req.query.limit && req.query.page && !req.query.search && !req.query.province) {
+    //console.log("2");
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
 
@@ -89,10 +91,12 @@ router.get("/", function (req, res) {
       }
     });
   }else if (req.query.search && req.query.province !== 'default' && !req.query.limit && !req.query.page) {
+    //console.log("3");
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     const regex1 = new RegExp(escapeRegex(req.query.province), 'gi');
+    const regex2 = new RegExp(escapeRegex(req.query.type), 'gi');
     var noMatch='';
-    Restaurant.find({name:regex, province: regex1}, function(err, allRestaurants) {
+    Restaurant.find({name:regex, province: regex1, type: regex2}, function(err, allRestaurants) {
         if(err) {
             console.log(err);
         }else {
@@ -107,9 +111,11 @@ router.get("/", function (req, res) {
         }
     });
   } else if(req.query.search && req.query.province === 'default') {
+    //console.log("4");
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    const regex1= new RegExp(escapeRegex(req.query.type), 'gi');
     var noMatch='';
-    Restaurant.find({name:regex}, function(err, allRestaurants) {
+    Restaurant.find({name:regex, type: regex1}, function(err, allRestaurants) {
         if(err) {
             console.log(err);
         }else {
@@ -124,11 +130,35 @@ router.get("/", function (req, res) {
         }
     });
   } else if(req.query.province && req.query.province !== 'default' && !req.query.search && !req.query.limit && !req.query.page) {
+    //console.log("5");
       const regex = new RegExp(escapeRegex(req.query.province), 'gi');
+      const regex1 = new RegExp(escapeRegex(req.query.type), 'gi');
       var noMatch='';
       console.log(regex);
       console.log(req.query.province);
-      Restaurant.find({province:regex}, function(err, allRestaurants) {
+      Restaurant.find({province:regex, type: regex1}, function(err, allRestaurants) {
+        if(err) {
+            console.log(err);
+        }else {
+            if(allRestaurants.length < 1) {
+                noMatch = "No restaurants match this search. Please try again!"
+            }
+            const mode = true;
+            var search;
+            var province = req.query.province;
+            newRestaurants = allRestaurants.slice(0,8);
+            res.render("restaurants/index", {restaurants: newRestaurants, noMatch: noMatch, results: results,
+              mode: mode,
+              length: allRestaurants.length, search: search, province: province});
+        }
+    });
+  } else if(req.query.province && req.query.province === 'default' && !req.query.search && !req.query.limit && !req.query.page) {
+    //console.log("55");
+      const regex = new RegExp(escapeRegex(req.query.type), 'gi');
+      var noMatch='';
+      console.log(regex);
+      console.log(req.query.province);
+      Restaurant.find({type: regex}, function(err, allRestaurants) {
         if(err) {
             console.log(err);
         }else {
@@ -145,6 +175,7 @@ router.get("/", function (req, res) {
         }
     });
   } else {
+    //console.log("6");
     Restaurant.find({}, function (err, allRestaurants) {
       if (err) {
         console.log(err);
@@ -175,6 +206,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
   var description = req.body.description;
   var province = req.body.province;
   var street = req.body.street;
+  var type = req.body.type;
   var newRestaurant = {
     name: name,
     image: image,
@@ -185,6 +217,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
       id: req.user._id,
       username: req.user.username,
     },
+    type: type
   };
   Restaurant.create(newRestaurant, function (err, newlyCreated) {
     if (err) {
@@ -201,6 +234,7 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 });
 
 router.get("/:id", function (req, res) {
+  var restaurants = [];
   Restaurant.findById(req.params.id).populate("comments").populate({
       path: "reviews",
       options: {sort: {createdAt: -1}}
@@ -208,7 +242,20 @@ router.get("/:id", function (req, res) {
       if (err) {
           console.log(err);
       } else {
-          res.render("restaurants/show", {restaurant: foundRestaurant});
+          foundRestaurant.similarRestaurants.forEach(function(code) {
+            Restaurant.findById(code, function(err, fndRest) {
+                //console.log("code ->"+code);
+                //console.log("id ->"+fndRest._id);
+                restaurants.push(fndRest);
+                //console.log(restaurants);
+                //console.log("__________________________");
+              })
+          })
+
+          setTimeout(function() {
+            res.render("restaurants/show", {restaurant: foundRestaurant, restaurants: restaurants});
+          },100)
+
       }
   });
 });

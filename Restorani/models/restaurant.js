@@ -26,7 +26,11 @@ var restaurantSchema = new mongoose.Schema({
     rating: {
         type: Number,
         default: 0
-    }
+    },
+    similarRestaurants: [{
+        code: String
+    }],
+    type: String
 });
 
 module.exports = mongoose.model("Restaurant", restaurantSchema);

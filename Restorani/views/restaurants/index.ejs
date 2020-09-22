@@ -1,16 +1,16 @@
 <%- include ("../partials/header") %>
 
 <div class="container">
-    <header class="jumbotron" style="height: 300px; background-color:#D7DBDD;">
+    <header class="jumbotron" style="height:300px; background-color:#D7DBDD;">
         <div class="container">
-            <p style="font-size: 44px; font-family: 'Lemonada', cursive;">Welcome To <br><span style="font-size: 44px;">BeogradskiRestorani.com</span></p>
+            <p class="jumbopara">Dobrodošli u<br><span class="jumbospan">BeogradskiRestorani.com</span></p>
             <br><br>
             <div>
-                <form action="/restaurants" method="GET" class="form-inline">
+                <form  action="/restaurants" method="GET" class="form-inline inputs">
                     <div class="form-group">
                         <input type="text" name="search" placeholder="Pretraga po nazivu" class="form-control">
                         <select name="province" class="form-control">
-                            <option value="default">Show All</option>
+                            <option value="default">Sve Lokacije</option>
                             <option value="Novi Beograd">Novi Beograd</option>
                             <option value="Savski Venac">Savski Venac</option>
                             <option value="Stari Grad">Stari Grad</option>
@@ -19,9 +19,22 @@
                             <option value="Zemun">Zemun</option>
                             <option value="Zvezdara">Zvezdara</option>
                           </select>
+                          <select name="type" class="form-control">
+                            <option value="Bar">Barovi i pabovi</option>
+                            <option value="Bistro">Bistro</option>
+                            <option value="Italijanska Hrana">Italijanska hrana</option>
+                            <option value="Kafeterija">Kafeterije</option>
+                            <option value="Kineska Hrana">Kineska hrana</option>
+                            <option value="Picerija">Picerije</option>
+                            <option value="Poslastičarnica">Poslastičarnice</option>
+                            <option selected value="Restoran">Restorani</option>
+                            <option value="Vegetarijanski Restoran">Vegetarijanski restorani</option>
+                            <option value="Čorbe">Čorbe</option>
+                          </select>
                         <input type="submit" value="Pretraži" class="btn btn-primary">
                     </div>
                 </form>
+                
               <!-- <span class="pull-right" style="margin-top: -35px;">
                     <form action="/restaurants" method="GET" class="form-inline">
                         <div class="form-group">
@@ -57,7 +70,7 @@
        <% value = results.next.page %>
     <% } %>
 
-    <% if(length < 8 && !results.next) { %>
+    <% if(length <= 8 && !results.next) { %>
         <% end = true %>
         <% prevEnd = true %>
     <% } %>
@@ -116,10 +129,9 @@
         </div>
         <% }); %>
     </div>
-    <div class="row" style="padding-top: 35px;">
-        <div class="col-xs-offset-5 col-xs-2">
+    <div class="buttons">
 
-            <form style="display: inline-block;" action="/restaurants" method="GET">
+            <form style="display: inline-block; margin-right: 21px;" action="/restaurants" method="GET">
                 <input type="text" name="limit" class="form-control" style="display: none;" value="<%= limit %>">
                 <input type="text" name="page" class="form-control" style="display: none;" value="<%= prevValue %>">
                 <% if(mode) { %>
@@ -127,9 +139,9 @@
                     <input type="text" name="province" class="form-control" style="display: none;" value="<%= province %>">
                     <% } %>
                 <% if(!prevEnd) { %>
-                    <button type="submit" class="btn btn-sm btn-info">prev</button>
+                    <button type="submit" class="btn btn-sm btnprev">prev</button>
                 <% } else { %>
-                    <button disabled type="submit" class="btn btn-sm btn-info">prev</button>
+                    <button disabled type="submit" class="btn btn-sm btnprev">prev</button>
                 <% } %>               
             </form>
 
@@ -141,13 +153,13 @@
                     <input type="text" name="province" class="form-control" style="display: none;" value="<%= province %>">
                     <% } %>
                 <% if(!end) { %>
-                    <button  type="submit" class="btn btn-sm btn-info">next</button>
+                    <button  type="submit" class="btn btn-sm btnnext">next</button>
                 <% } else { %>
-                    <button disabled type="submit" class="btn btn-sm btn-info">next</button>
+                    <button disabled type="submit" class="btn btn-sm  btnnext">next</button>
                 <% } %>                
             </form>
 
-        </div>
+        
     </div>
 </div>
 <br><br>
