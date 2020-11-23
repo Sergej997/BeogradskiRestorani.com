@@ -1,3 +1,4 @@
+<html>
 # BeogradskiRestorani.com
 <p>
 This is web application that gives users preview of best restaurants settled in Belgrade. It offers functionalities of adding new restaurant, editing and removing existing ones, as well as ability to create new account, register to existing one, and also to write comments and reviews for any restaurant.
@@ -97,3 +98,5 @@ node app.js
 When user runs the application, he is shown langing page with the button to go to the home page. Home page shows all restaurants, with the option to change pages of the restaurants. Every restaurant is shown as image with the name of the restaurant below and star review (1-5). When user clicks on any restaurant, he gets more info about that restaurant (description, location, type of restaurant) as well as all all available comments and reviews. User can edit and delete both comments and reviews, but just the ones that are written by that user. There's also search option that makes it easier to the user to find restaurants basesd on restaurant name, type and location.
 
 </p>
+
+</html>
