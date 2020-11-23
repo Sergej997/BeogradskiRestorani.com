@@ -17,7 +17,7 @@ Landing page<br>
 <a href="https://ibb.co/5MmWMnQ%22%3E"><img src="https://i.ibb.co/j6mv6WC/2.png" alt="2" border="0"></a>
 <br>
 Restaurants<br>
-<a href="https://ibb.co/M6pJVdj%22%3E<img src="https://i.ibb.co/jRGjMtx/3.png" alt="3" border="0"></a>
+<a href="https://ibb.co/M6pJVdj%22%3E"><img src="https://i.ibb.co/jRGjMtx/3.png" alt="3" border="0"></a>
 <br>
 <a href="https://ibb.co/h7P8T1M%22%3E"><img src="https://i.ibb.co/Vj7BkpN/4.png" alt="4" border="0"></a>
 <br>
@@ -32,7 +32,7 @@ Comments and reviews<br>
 <br>
 Login form
 <br>
-<a href="https://ibb.co/XZ9QnnQ%22%3E<img src="https://i.ibb.co/SX2jkkj/7.png" alt="7" border="0"></a>
+<a href="https://ibb.co/XZ9QnnQ%22%3E"><img src="https://i.ibb.co/SX2jkkj/7.png" alt="7" border="0"></a>
 <br>
 New restaurant form
 <br>
