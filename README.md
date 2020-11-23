@@ -19,16 +19,16 @@ Landing page<br>
 Restaurants<br>
 <a href="https://ibb.co/M6pJVdj%22%3E<img src="https://i.ibb.co/jRGjMtx/3.png" alt="3" border="0"></a>
 <br>
-<a href="https://ibb.co/h7P8T1M%22%3E<img src="https://i.ibb.co/Vj7BkpN/4.png" alt="4" border="0"></a>
+<a href="https://ibb.co/h7P8T1M%22%3E"><img src="https://i.ibb.co/Vj7BkpN/4.png" alt="4" border="0"></a>
 <br>
 Restaurant page
 <br>
-<a href="https://ibb.co/yqyKdpK%22%3E<img src="https://i.ibb.co/sqwcbCc/5.png" alt="5" border="0"></a>
+<a href="https://ibb.co/yqyKdpK%22%3E"><img src="https://i.ibb.co/sqwcbCc/5.png" alt="5" border="0"></a>
 <br>
 
 Comments and reviews<br>
 
-<a href="https://ibb.co/Ycsrg9m%22%3E<img src="https://i.ibb.co/K2v1nZd/6.png" alt="6" border="0"></a>
+<a href="https://ibb.co/Ycsrg9m%22%3E"><img src="https://i.ibb.co/K2v1nZd/6.png" alt="6" border="0"></a>
 <br>
 Login form
 <br>
@@ -36,14 +36,14 @@ Login form
 <br>
 New restaurant form
 <br>
-<a href="https://ibb.co/3fqcKDd%22%3E<img src="https://i.ibb.co/mvw4pLT/8.png" alt="8" border="0"></a>
+<a href="https://ibb.co/3fqcKDd%22%3E"><img src="https://i.ibb.co/mvw4pLT/8.png" alt="8" border="0"></a>
 <br>
 Search option
 <br>
-<a href="https://ibb.co/BPbpqc4%22%3E<img src="https://i.ibb.co/pPc7JbW/9.png" alt="9" border="0"></a>
+<a href="https://ibb.co/BPbpqc4%22%3E"><img src="https://i.ibb.co/pPc7JbW/9.png" alt="9" border="0"></a>
 <br>
 Restaurant page<br>
-<a href="https://ibb.co/VHcMs3z%22%3E<img src="https://i.ibb.co/vs6LSDT/10.png" alt="10" border="0"></a>
+<a href="https://ibb.co/VHcMs3z%22%3E"><img src="https://i.ibb.co/vs6LSDT/10.png" alt="10" border="0"></a>
 ## Used tehnologies
 
 
