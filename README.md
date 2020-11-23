@@ -14,7 +14,7 @@ This is web application that gives users preview of best restaurants settled in 
 Landing page<br>
 <img src="https://i.ibb.co/ry5hPCB/1.png" alt="1" border="0">
 <br>
-<a href="https://ibb.co/5MmWMnQ%22%3E><img src="https://i.ibb.co/j6mv6WC/2.png" alt="2" border="0"></a>
+<a href="https://ibb.co/5MmWMnQ%22%3E"><img src="https://i.ibb.co/j6mv6WC/2.png" alt="2" border="0"></a>
 <br>
 Restaurants<br>
 <a href="https://ibb.co/M6pJVdj%22%3E<img src="https://i.ibb.co/jRGjMtx/3.png" alt="3" border="0"></a>
