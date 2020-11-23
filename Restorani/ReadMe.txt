@@ -1,61 +1,63 @@
-<html>
-# BeogradskiRestorani.com
+# Fit&Sit
 <p>
-This is web application that gives users preview of best restaurants settled in Belgrade. It offers functionalities of adding new restaurant, editing and removing existing ones, as well as ability to create new account, register to existing one, and also to write comments and reviews for any restaurant.
+PWA made using Angular and Ionic framework. Application have functionalities of recipe book, shopping list and calories tracker.
 </p>
 
 # Motivation
 
 <p>
-This application aims to make it easier for the user to find best restaurants in Belgrade.
+This application aims to make it easier for the user to take care of their diet and help them lead a healthier life.
 </p>
 
 # Screenshots
 
-Landing page
+Sign up/Login page
 <br>
-<a href="https://ibb.co/NYWqh80%22%3E<img src="https://i.ibb.co/ry5hPCB/1.png" alt="1" border="0"></a>
+<a href="https://ibb.co/YBRTkPj"><img src="https://i.ibb.co/B2zKZcs/Screenshot-from-2020-11-14-13-26-56.png" alt="Screenshot-from-2020-11-14-13-26-56" border="0"></a>
 <br>
-Landing page
+All recepies page
 <br>
-<a href="https://ibb.co/5MmWMnQ%22%3E<img src="https://i.ibb.co/j6mv6WC/2.png" alt="2" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/FnCRXJx/Screenshot-from-2020-11-14-13-27-26.png" alt="Screenshot-from-2020-11-14-13-27-26" border="0"></a>
 <br>
-Home page
+Sweets tab
 <br>
-<a href="https://ibb.co/h7P8T1M%22%3E<img src="https://i.ibb.co/Vj7BkpN/4.png" alt="4" border="0"></a>
-<br>
-
-Restaurant page
+<a href="https://ibb.co/dWXW1y0"><img src="https://i.ibb.co/7YBY8FJ/Screenshot-from-2020-11-14-13-27-55.png" alt="Screenshot-from-2020-11-14-13-27-55" border="0"></a>
 <br>
 
-<a href="https://ibb.co/yqyKdpK%22%3E<img src="https://i.ibb.co/sqwcbCc/5.png" alt="5" border="0"></a>
-<br>
-Reviews and comments
-<a href="https://ibb.co/Ycsrg9m%22%3E<img src="https://i.ibb.co/K2v1nZd/6.png" alt="6" border="0"></a>
-<br>
-Login form
-<a href="https://ibb.co/XZ9QnnQ%22%3E<img src="https://i.ibb.co/SX2jkkj/7.png" alt="7" border="0"></a>
+Choosen recepie with supplies and preparation process
 <br>
 
-New restaurant form
+<a href="https://ibb.co/JvDdrC2"><img src="https://i.ibb.co/bsc3N7L/Screenshot-from-2020-11-14-13-29-25.png" alt="Screenshot-from-2020-11-14-13-29-25" border="0"></a>
 <br>
 
-<a href="https://ibb.co/3fqcKDd%22%3E<img src="https://i.ibb.co/mvw4pLT/8.png" alt="8" border="0"></a>
+<a href="https://ibb.co/3SQwppF"><img src="https://i.ibb.co/zPD1XX2/Screenshot-from-2020-11-14-13-30-16.png" alt="Screenshot-from-2020-11-14-13-30-16" border="0"></a>
 <br>
 
-Search functionality
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/vQ97HJz/Screenshot-from-2020-11-14-13-30-29.png" alt="Screenshot-from-2020-11-14-13-30-29" border="0"></a>
 <br>
 
-<a href="https://ibb.co/BPbpqc4%22%3E<img src="https://i.ibb.co/pPc7JbW/9.png" alt="9" border="0"></a>
+My receipes
 <br>
 
-Restaurant page
+<a href="https://ibb.co/XWmmkKL"><img src="https://i.ibb.co/x2VV8BL/Screenshot-from-2020-11-14-13-28-09.png" alt="Screenshot-from-2020-11-14-13-28-09" border="0"></a>
 <br>
 
-<a href="https://ibb.co/VHcMs3z%22%3E<img src="https://i.ibb.co/vs6LSDT/10.png" alt="10" border="0"></a>
+Adding new recepie
 <br>
 
+<a href="https://ibb.co/n6rzXbK"><img src="https://i.ibb.co/NtxZ0sG/Screenshot-from-2020-11-14-13-28-57.png" alt="Screenshot-from-2020-11-14-13-28-57" border="0"></a>
+<br>
 
+Shopping list
+<br>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/mSC9cqh/Screenshot-from-2020-11-14-13-31-03.png" alt="Screenshot-from-2020-11-14-13-31-03" border="0"></a>
+<br>
+
+Calories tracker
+<br>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Ctj6zPQ/Screenshot-from-2020-11-14-13-31-25.png" alt="Screenshot-from-2020-11-14-13-31-25" border="0"></a>
 
 
 ## Used tehnologies
@@ -65,22 +67,25 @@ Restaurant page
   <li>HTML</li>
   <li>CSS</li>
   <li>JavaScript</li>
-  <li>Bootstrap</li>
+  <li>TypeScript</li>
+  <li>Angural</li>
+  <li>Ionic</li>
+  <li>Capacitor</li> 
 </ul>
 <h3>Backend</h3>
-<p>Node.js</p>
-<p>Express</p>
-<p>Mongo</p>
+<p>Firebase</p>
 
 ## Features
 
-- [x] Authentication
-- [x] Adding, Deleting and Editing restaurants
-- [x] Writting comments and reviews for restaurants
-- [x] Creating user profiles
-- [x] No singup/login required
-- [ ] Adding google maps
-- [ ] Ability to change application language
+- [x] Cross-platform
+- [x] Adding and Editing my recepies
+- [x] Using of device camera
+- [x] Adding ingredients to shopping list
+- [x] Choosing category of recepies(breakfast, luch, diner, sweets..)
+- [x] Setting caliorie goals depending on users data
+- [ ] No singup/login required
+- [ ] Graphical represenattion of calories
+- [ ] Ability to change calorie goals
 
 ## Installation
 Install dependencies
@@ -90,13 +95,7 @@ npm install
 ## Run the app on the browser
 
 ```sh
-node app.js
+ionic serve
 ```
 ## How to use
-<p>
-
-When user runs the application, he is shown langing page with the button to go to the home page. Home page shows all restaurants, with the option to change pages of the restaurants. Every restaurant is shown as image with the name of the restaurant below and star review (1-5). When user clicks on any restaurant, he gets more info about that restaurant (description, location, type of restaurant) as well as all all available comments and reviews. User can edit and delete both comments and reviews, but just the ones that are written by that user. There's also search option that makes it easier to the user to find restaurants basesd on restaurant name, type and location.
-
-</p>
-
-</html>
+<p>When the user launches the application, the login form is displayed.  User can inspect recipe page only after logging process is successful. The user has the option of searching for recipes through segments that indicate categories. Selecting a recipe displays a description of the recipe, ingredients that can be added to the shopping list and also recipe's preparation process. Pressing the "+" label which is placed under my recipes segment shows the form for adding a new recipe. Clicking on the charger in the side menu opens a form where user can add data. Calory goal for every user is calculated based on the data entered in this form.</p>
